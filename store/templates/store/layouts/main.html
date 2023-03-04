@@ -16,6 +16,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
+    {% comment %} ALERTIFY JS {% endcomment %}
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+
     <style>
 
         *{
@@ -58,6 +63,17 @@
 
     {% comment %} Custom JS {% endcomment %}
     <script src="{% static '/js/custom.js' %}"></script>
+
+    {% comment %} Alertify JS {% endcomment %}
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <script>
+        alertify.set('notifier','position', 'top-right');
+        {% for msg in messages %}
+            alertify.success('{{ msg }}');
+        {% endfor %}
+
+    </script>
     {% block scripts %}
 
     {% endblock scripts %}
